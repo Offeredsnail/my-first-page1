@@ -41,9 +41,9 @@
 
         <!-- Audio Element to Play MP3 -->
         <audio id="musicPlayer" class="hidden-audio">
-            <source src="audio/wishing-well.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-          </audio>          
+          <source src="c:\Users\abdulkadirchowdhury\Downloads\juice wrld - wishing well﹝slowed + reverb﹞.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>          
       </div>
     </div>
 
@@ -74,7 +74,6 @@
           document.getElementById('playMusicBtn').textContent = 'Pause Music'; // Change button text to 'Pause Music' when audio is playing
         } else {
           audioPlayer.pause();  // If the audio is playing, pause it
-          audioPlayer.currentTime = 0;  // Reset the audio to the start
           document.getElementById('playMusicBtn').textContent = 'Play Music'; // Change button text back to 'Play Music'
         }
       });
