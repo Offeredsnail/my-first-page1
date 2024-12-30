@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Invitation Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Input Form to get Name -->
+    <div class="input-form">
+      <h2>Enter Your Name</h2>
+      <form id="nameForm">
+        <input type="text" id="firstName" placeholder="Enter your name" required />
+        <button type="submit">Generate Invitation</button>
+      </form>
+    </div>
+
+    <!-- The Birthday Card Section -->
+    <div class="card" style="display: none;">
+      <div class="outside">
+        <div class="front">
+          <p>You're Invited, <span id="birthday-name">[Name]</span>!</p>
+          <div class="details">
+            <p class="date-time">Date: 14/02/2025</p>
+            <p class="time">Time: 17:00 PM</p>
+          </div>
+        </div>
+        <div class="back">
+          <p class="back-text">You're invited to a wonderful celebration!</p>
+          <p>Come celebrate with us and make unforgettable memories!</p>
+        </div>
+      </div>
+      <div class="inside">
+        <h1>&#127874;</h1>
+        <!-- Updated text -->
+        <p>It's my birthday!</p>
+
+        <!-- Button to Play Music -->
+        <button id="playMusicBtn">Play Music</button>
+
+        <!-- Audio Element to Play MP3 -->
+        <audio id="musicPlayer" class="hidden-audio">
+            <source src="audio/wishing-well.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>          
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Update the name on the card when the form is submitted
+      document.getElementById('nameForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent form submission
+
+        // Get name from input field
+        const firstName = document.getElementById('firstName').value;
+
+        // Update the name on the card
+        document.getElementById('birthday-name').textContent = firstName;
+
+        // Hide the input form and show the card
+        document.querySelector('.input-form').style.display = 'none';
+        document.querySelector('.card').style.display = 'block';
+      });
+
+      // Play the audio when the "Play Music" button is clicked
+      document.getElementById('playMusicBtn').addEventListener('click', function () {
+        const audioPlayer = document.getElementById('musicPlayer');
+
+        // Check if the audio is paused, then play it
+        if (audioPlayer.paused) {
+          audioPlayer.play();
+          document.getElementById('playMusicBtn').textContent = 'Pause Music'; // Change button text to 'Pause Music' when audio is playing
+        } else {
+          audioPlayer.pause();  // If the audio is playing, pause it
+          audioPlayer.currentTime = 0;  // Reset the audio to the start
+          document.getElementById('playMusicBtn').textContent = 'Play Music'; // Change button text back to 'Play Music'
+        }
+      });
+    </script>
+  </body>
+</html>
